@@ -1,0 +1,10 @@
+# Core ML / CV
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+cvzone>=1.6.1
+
+# Utilities (pulled in by ultralytics but listed explicitly for clarity)
+numpy>=1.24.0
+Pillow>=10.0.0
+torch>=2.0.0          # CPU build is fine; install a CUDA build separately for GPU
+torchvision>=0.15.0
