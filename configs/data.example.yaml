@@ -1,0 +1,10 @@
+# Ultralytics dataset config — point `path` at your helmet dataset
+# (e.g. a Roboflow "Bike Helmet Detection" export in YOLO format).
+path: ../datasets/helmet
+train: train/images
+val: valid/images
+test: test/images
+
+names:
+  0: With Helmet
+  1: Without Helmet

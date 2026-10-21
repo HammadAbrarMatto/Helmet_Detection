@@ -1,29 +1,32 @@
 # Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-.Python
 *.egg-info/
 dist/
 build/
-.eggs/
+.pytest_cache/
+.ruff_cache/
 
-# Virtual environments
+# Environments
 .venv/
 venv/
 env/
+.env
 
-# Model weights (large binary — distribute separately)
-Weights/*.pt
-Weights/*.onnx
+# Model weights (distribute separately / via Releases)
+weights/*
+!weights/.gitkeep
+*.pt
+*.onnx
+*_openvino_model/
+*.engine
 
-# Media (sample files — distribute separately or via Git LFS)
-Media/
-
-# Output data
-violations/
-violations.csv
+# Media & outputs
+media/*
+!media/.gitkeep
+outputs/
+runs/
+datasets/
 
 # IDE / OS
 .vscode/
@@ -31,7 +34,4 @@ violations.csv
 *.swp
 .DS_Store
 Thumbs.db
-
-# Jupyter
 .ipynb_checkpoints/
-*.ipynb
