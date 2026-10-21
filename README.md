@@ -90,7 +90,7 @@ Without installing, `python -m helmet_detection ...` works from the repo root wi
 ```bash
 helmet-detect train --data configs/data.example.yaml --model yolo26s.pt --epochs 100
 helmet-detect val   --data configs/data.example.yaml --weights runs/helmet/train/weights/best.pt
-cp runs/helmet/train/weights/best.pt weights/best.pt
+cp runs/helmet/train/weights/best.pt weights/best.pt   # path is printed at the end of training
 ```
 
 `--model` accepts any Ultralytics checkpoint (`yolo26n/s/m/l/x.pt`, `yolo11*.pt`, or your old YOLOv8 weights). Training uses auto batch size, cosine LR and early stopping (`patience=25`).
@@ -133,6 +133,10 @@ Defaults live in `src/helmet_detection/config.py`. Override any of them with env
 Snapshots are written to `outputs/violations/`. The GUI and web app both include a log viewer, and the web app can export it as CSV.
 
 ---
+
+## ✅ End-to-end check
+
+`python scripts/e2e_synthetic.py` trains a small YOLO on a generated dataset and runs train → val → image → video tracking → ONNX export through the real CLI. No dataset or downloads are needed. Last run: mAP50 0.994; the rider who stays in frame for 30 video frames is logged **once**; ONNX output matches PyTorch.
 
 ## 🧪 Development
 

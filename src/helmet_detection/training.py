@@ -24,7 +24,7 @@ def train(
     yolo = YOLO(model)
     yolo.train(
         data=data, epochs=epochs, imgsz=imgsz, batch=batch, device=device,
-        project=project, name=name, patience=patience, exist_ok=True,
+        project=str(Path(project).resolve()), name=name, patience=patience, exist_ok=True,
         cos_lr=True, close_mosaic=10, plots=True,
     )
     best = Path(yolo.trainer.save_dir) / "weights" / "best.pt"

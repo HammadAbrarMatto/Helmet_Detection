@@ -28,7 +28,8 @@ def draw_detection(img: np.ndarray, det: Detection) -> None:
     _corner_rect(img, det.box, color)
     text = f"{det.label} {det.conf:.2f}" + (f" #{det.track_id}" if det.track_id is not None else "")
     (tw, th), base = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.55, 1)
-    x, y = max(0, det.x1), max(th + base + 4, det.y1)
+    x = max(0, min(det.x1, img.shape[1] - tw - 6))  # keep the label inside the frame
+    y = max(th + base + 4, det.y1)
     cv2.rectangle(img, (x, y - th - base - 4), (x + tw + 6, y), color, -1)
     cv2.putText(img, text, (x + 3, y - base - 2), cv2.FONT_HERSHEY_SIMPLEX, 0.55, COLOR_TEXT, 1, cv2.LINE_AA)
 
